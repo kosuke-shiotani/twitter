@@ -54,3 +54,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Crawling tools
+gem 'open-uri'
+gem 'nokogiri'
