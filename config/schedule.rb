@@ -3,11 +3,7 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
-<<<<<<< HEAD
-# Example:
-=======
  # Example:
->>>>>>> 00223c8d373346a6d019c603f180739212fbf2f4
 #
 # set :output, "/path/to/my/cron_log.log"
 #
@@ -23,17 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-<<<<<<< HEAD
-require File.expand_path(File.dirname(__FILE__) + "/environment")
-set :output, 'log/crontab.log'
-set :environment, :development
-
-
-#2時間ごとに動かす
-every 2.hours do
-  rake 'twitter:tweet'
-end
-=======
 # Rails.rootを使用するために必要
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 
@@ -68,4 +53,3 @@ bundle exec whenever --write-crontab
 bundle exec whenever --clear-crontab
 
 =end
->>>>>>> 00223c8d373346a6d019c603f180739212fbf2f4
