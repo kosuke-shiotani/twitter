@@ -57,17 +57,15 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-<<<<<<< HEAD
 gem "twitter"
 gem 'whenever', require: false
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'dotenv-rails'
-=======
+
 # Scraping tools
 gem 'nokogiri'
 gem 'anemone'
 
 # cron tools
 gem 'whenever', require: false
->>>>>>> 00223c8d373346a6d019c603f180739212fbf2f4
