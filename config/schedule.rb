@@ -3,7 +3,7 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
-# Example:
+ # Example:
 #
 # set :output, "/path/to/my/cron_log.log"
 #
@@ -25,8 +25,16 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 # cronのログ出力場所を設定
 set :output, "#{Rails.root}/log/cron.log"
 
-every 1.days do
-    command "echo 'cron whenever test'"
+# schedule.rb内でrbenvの設定が効かないのでrbenvを初期化する
+set :job_template, "/bin/zsh -l -c ':job"
+job_type :rake, "export PATH=\"$HOME/.rbenv/shims:$PATH\"; eval \"$(rbenv init -)\"; cd :path &&  bundle exec rake :task :output"
+
+every 1.minutes do
+    begin
+        rake 'amazon_scraping:start', environment => 'development'
+    rescue => exception
+        raise exception
+    end
 end
 
 =begin

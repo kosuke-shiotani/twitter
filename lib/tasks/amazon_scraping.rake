@@ -1,4 +1,4 @@
-namespace :rakuten_crawling do
+namespace :amazon_scraping do
 
     # bundle exec rails 'rakuten_crawling:start'とターミナルで打つことでrakeタスクを実行
     desc 'Amazonサイトのスクレイピング'
