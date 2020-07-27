@@ -1,6 +1,6 @@
 namespace :amazon_scraping do
 
-    # bundle exec rails 'rakuten_crawling:start'とターミナルで打つことでrakeタスクを実行
+    # bundle exec rails 'amazon_scraping:start'とターミナルで打つことでrakeタスクを実行
     desc 'Amazonサイトのスクレイピング'
     task :start do
         begin
@@ -10,7 +10,6 @@ namespace :amazon_scraping do
 
             Anemone.crawl(url, :depth_limit => 1) do |anemone|
                 anemone.on_every_page do |page|
-                    puts page.url
                     target_urls.push(page.url.to_s) if(url_format.match(page.url.to_s))
                 end
             end

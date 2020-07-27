@@ -26,14 +26,15 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 set :output, "#{Rails.root}/log/cron.log"
 
 # schedule.rb内でrbenvの設定が効かないのでrbenvを初期化する
-set :job_template, "/bin/zsh -l -c ':job"
-job_type :rake, "export PATH=\"$HOME/.rbenv/shims:$PATH\"; eval \"$(rbenv init -)\"; cd :path &&  bundle exec rake :task :output"
+job_type :rake, 'export PATH="/Users/sasayaryouta/.anyenv/envs/rbenv/shims:/Users/sasayaryouta/.anyenv/envs/rbenv/bin:/Users/sasayaryouta/.anyenv/envs/nodenv/shims:/Users/sasayaryouta/.anyenv/envs/nodenv/bin:/Users/sasayaryouta/.anyenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sasayaryouta/.fzf/bin"; eval "$(rbenv init -)"; cd :path &&  bundle exec rake :task :output'
 
 every 1.minutes do
     begin
         rake 'amazon_scraping:start', environment => 'development'
+        command "echo 'rake task finished'"
     rescue => exception
         raise exception
+        command "echo 'rake task stopped'"
     end
 end
 
